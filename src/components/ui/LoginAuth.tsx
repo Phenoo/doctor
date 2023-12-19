@@ -8,16 +8,20 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { CubeIcon, GitHubLogoIcon } from "@radix-ui/react-icons"
 import { FcGoogle } from "react-icons/fc";
-
+import {useRouter } from "next/navigation"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function LoginAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const router = useRouter()
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
     setIsLoading(true)
+
+    router.push("/dashboard")
+
 
     setTimeout(() => {
       setIsLoading(false)
